@@ -59,7 +59,7 @@ public abstract class ControllerAuth {
     protected static final String SESSION_OID_CONSUMER = "OID_CONSUMER";
 
     protected static final Pattern OID_YAHOO =
-            Pattern.compile("^https?://me\\.yahoo\\.com(/.*)?$");
+            Pattern.compile("^https?://me\\.(yahoo|ymail)\\.com(/.*)?$");
     protected static final Pattern OID_GOOGLE =
             Pattern.compile("^https?://www\\.google\\.com/accounts/o8/id(/.*)?(\\?.+)?$");
     protected static final Pattern OID_GOOGLE_PROFILES =
