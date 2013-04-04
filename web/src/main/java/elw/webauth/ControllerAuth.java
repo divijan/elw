@@ -59,14 +59,14 @@ public abstract class ControllerAuth {
     protected static final String SESSION_OID_CONSUMER = "OID_CONSUMER";
 
     protected static final Pattern OID_YAHOO =
-            Pattern.compile("^https?://me\\.(yahoo|ymail)\\.com(/.*)?$");
+            Pattern.compile("^https?://me\\.yahoo\\.com(/.*)?$");
     protected static final Pattern OID_GOOGLE =
             Pattern.compile("^https?://www\\.google\\.com/accounts/o8/id(/.*)?(\\?.+)?$");
     protected static final Pattern OID_GOOGLE_PROFILES =
             Pattern.compile("^https?://www\\.google\\.com/profiles/.+$");
     protected static final Pattern OID_YANDEX =
             Pattern.compile("^https?://openid\\.yandex\\.ru(/.*)?$");
-    protected static final Pattern OID_MAILRU = //TODO: toss this, add all possible Rambler patterns
+    protected static final Pattern OID_MAILRU = //TODO: add all possible Rambler patterns
             Pattern.compile("^https?://openid\\.mail\\.ru/mail(/.*)?$");
 
     protected static final String OID_REDIR_BODY_TARGETURL = "${targetUrl}";
@@ -87,11 +87,11 @@ public abstract class ControllerAuth {
         final Map<Pattern, Pattern> trustedProviders =
                 new HashMap<Pattern, Pattern>();
 
-        trustedProviders.put(OID_YAHOO, Pattern.compile("^.+@yahoo\\.com$"));
-        trustedProviders.put(OID_GOOGLE, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org)$"));
+        trustedProviders.put(OID_YAHOO, Pattern.compile("^.+@(yahoo|ymail|rocketmail)\\.com$"));
+        trustedProviders.put(OID_GOOGLE, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org|bigmir\\.net)$"));
         //what is this for?
-		trustedProviders.put(OID_GOOGLE_PROFILES, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org)$"));
-        trustedProviders.put(OID_YANDEX, Pattern.compile("^.+@yandex\\.ru$"));
+		trustedProviders.put(OID_GOOGLE_PROFILES, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org)$|bigmir\\.net"));
+        trustedProviders.put(OID_YANDEX, Pattern.compile("^.+@(yandex\\.(ru|ua|com)|ya\\.ru)$"));
         trustedProviders.put(OID_MAILRU, Pattern.compile("^.+@mail\\.ru$"));
 
         return trustedProviders;
