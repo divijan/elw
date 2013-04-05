@@ -60,6 +60,7 @@ public abstract class ControllerAuth {
 
     protected static final Pattern OID_YAHOO =
             Pattern.compile("^https?://me\\.yahoo\\.com(/.*)?$");
+	//Do we need separate regexes for the next two?
     protected static final Pattern OID_GOOGLE =
             Pattern.compile("^https?://www\\.google\\.com/accounts/o8/id(/.*)?(\\?.+)?$");
     protected static final Pattern OID_GOOGLE_PROFILES =
@@ -88,10 +89,11 @@ public abstract class ControllerAuth {
                 new HashMap<Pattern, Pattern>();
 
         trustedProviders.put(OID_YAHOO, Pattern.compile("^.+@(yahoo|ymail|rocketmail)\\.com$"));
-        trustedProviders.put(OID_GOOGLE, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org|bigmir\\.net)$"));
-        //what is this for?
-		trustedProviders.put(OID_GOOGLE_PROFILES, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org)$|bigmir\\.net"));
+        //bigmir.net users actually get OpenIDs from google
+		trustedProviders.put(OID_GOOGLE, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org|bigmir\\.net)$"));
+		trustedProviders.put(OID_GOOGLE_PROFILES, Pattern.compile("^.+@(gmail\\.com|akraievoy\\.org|bigmir\\.net)$"));
         trustedProviders.put(OID_YANDEX, Pattern.compile("^.+@(yandex\\.(ru|ua|com)|ya\\.ru)$"));
+		//add mail.ru button to login page
         trustedProviders.put(OID_MAILRU, Pattern.compile("^.+@mail\\.ru$"));
 
         return trustedProviders;
